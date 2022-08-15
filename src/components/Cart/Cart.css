@@ -1,0 +1,25 @@
+.float-left {
+  width: 80%;
+  float: left;
+  text-align: left;
+}
+.float-right {
+  width: 20%;
+  float: right;
+  text-align: left;
+}
+.text-danger {
+  color: rgb(207, 24, 24);
+}
+.bold {
+  font-weight: bold;
+}
+span.float-left.text-danger.bold,
+.tax {
+  border-top: 1px solid rgb(129, 129, 129);
+  padding: 10px 0 10px 0;
+}
+
+.btn-gold:hover {
+  background-color: #fcb709b4;
+}
