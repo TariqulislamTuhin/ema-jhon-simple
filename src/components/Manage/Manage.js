@@ -2,7 +2,7 @@ import React from 'react';
 
 const Manage = () => {
     return (
-        <div>
+        <div className='container'>
             <h1>this is manage page</h1>
         </div>
     );

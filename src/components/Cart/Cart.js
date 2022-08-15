@@ -1,15 +1,17 @@
 import React from "react";
 import "./Cart.css";
+import { NavLink, useLocation } from "react-router-dom";
 
 const Cart = (props) => {
   const { cart } = props;
-  console.log(props);
-  const price = cart.reduce((total, p) => total + p.price, 0);
+  const { pathname } = useLocation();
+  // console.log(props);
   
+  const price =
+    cart && cart.reduce((total, p) => total + p.price * p.quantity, 0);
   const formatNumber = (num) => {
     return Number(num.toFixed(2));
   };
-  let tax = formatNumber(0.7 * price);
   let shipping = 10;
   if (price < 1) {
     shipping = 0;
@@ -17,7 +19,9 @@ const Cart = (props) => {
   function percentage(percent, total) {
     return formatNumber((percent / 100) * total);
   }
-  let total = Math.round(formatNumber(price + shipping + percentage(15,price)));
+  let total = Math.round(
+    formatNumber(price + shipping + percentage(15, price))
+  );
   return (
     <div>
       <h2>Order Summery</h2>
@@ -37,7 +41,7 @@ const Cart = (props) => {
         </p>
         <p>
           <span className="float-left">Estimated Tax:</span>
-          <span className="float-right">${percentage(15,price)}</span>
+          <span className="float-right">${percentage(15, price)}</span>
         </p>
         <p>
           <b>
@@ -45,7 +49,15 @@ const Cart = (props) => {
             <span className="float-right text-danger tax">${total}</span>
           </b>
         </p>
-        <button className="btn-gold margin-top-10">review your order</button>
+        <NavLink
+          className={({ isActive }) => (isActive ? "active-link" : "none")}
+          to="/review"
+        >
+          
+            <button className="btn-gold margin-top-10" onClick={()=> pathname==='/review' ? props.placeOrder(cart) : undefined}>
+              {pathname === "/review" ? `Place Order` : 'Review Order'}
+            </button>
+        </NavLink>
       </div>
     </div>
   );

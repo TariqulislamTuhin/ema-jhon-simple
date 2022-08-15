@@ -23,3 +23,9 @@ span.float-left.text-danger.bold,
 .btn-gold:hover {
   background-color: #fcb709b4;
 }
+.active-link button {
+  background-color: rgb(199, 199, 245);
+}
+.active-link button:hover {
+  background-color: #fcb709b4;
+}

@@ -1,16 +1,19 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink,Link } from "react-router-dom";
 import logo from "../../images/logo.png";
 import "./Header.css";
 
 const Header = () => {
+  
   return (
     <div className="header">
+      <Link  to="/">
       <img src={logo} alt="logo" />
+      </Link>
       <nav>
-        <Link to="/">Shop</Link>
-        <Link to="/review">Order Review</Link>
-        <Link to="/manage">Manage Inventory</Link>
+        <NavLink className={({isActive}) => (isActive ? "active" : 'none')} to="/">Shop</NavLink>
+        <NavLink className={({isActive}) => (isActive ? "active" : 'none')} to="/review">Order Review</NavLink>
+        <NavLink className={({isActive}) => (isActive ? "active" : 'none')} to="/manage">Manage Inventory</NavLink>
       </nav>
     </div>
   );

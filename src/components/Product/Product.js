@@ -1,11 +1,11 @@
 import React from "react";
 import "./Product.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
-import {Link} from 'react-router-dom';
+import { faShoppingCart,faTrash } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 const Product = (props) => {
-  const { key,name, img, stock, seller, price} = props.product;
+  const { key, name, img, stock, seller, price, quantity = 0 } = props.product;
   return (
     <div className="product">
       <div className="product-image">
@@ -20,14 +20,35 @@ const Product = (props) => {
           <br />
           <small>Stock: {stock}</small>
           <br />
-          <small>price: {price}</small>
+          <small>price: {price} / pcs</small>
+          <br />
+          {
+            props.review && (
+              <>
+              <small>Quantity: {quantity}</small> <br />
+              <small>Total Price: {Math.round((quantity*price).toFixed(2))}</small>
+              </>
+
+            )
+          }
         </p>
-        <button
-          className="add-to-cart"
-          onClick={() => props.handleAddtoCart(props.product)}
-        >
-          <FontAwesomeIcon icon={faShoppingCart} /> add to cart
-        </button>
+
+        {props.showAddtoCart === true  && (
+          <button
+            className="add-to-cart"
+            onClick={() => props.handleAddtoCart(props.product)}
+          >
+            <FontAwesomeIcon icon={faShoppingCart} /> add to cart
+          </button>
+        )}
+        {
+          props.review && 
+          <button
+            className="add-to-cart"
+            onClick={() => props.removeCart(props.product)}
+          >
+            <FontAwesomeIcon icon={faTrash} /> Remove Item</button>
+        }
       </div>
     </div>
   );

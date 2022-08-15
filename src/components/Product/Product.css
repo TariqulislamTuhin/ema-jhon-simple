@@ -1,5 +1,6 @@
 .product {
   display: flex;
+  margin: 0 2vw;
   margin-bottom: 3vh;
   border-radius: 1%;
   background-color: #f5f1f188;
