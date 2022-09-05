@@ -6,7 +6,7 @@ const Cart = (props) => {
   const { cart } = props;
   const { pathname } = useLocation();
   // console.log(props);
-  
+
   const price =
     cart && cart.reduce((total, p) => total + p.price * p.quantity, 0);
   const formatNumber = (num) => {
@@ -51,12 +51,13 @@ const Cart = (props) => {
         </p>
         <NavLink
           className={({ isActive }) => (isActive ? "active-link" : "none")}
-          to="/review"
+          to="/shipment"
         >
-          
-            <button className="btn-gold margin-top-10" onClick={()=> pathname==='/review' ? props.placeOrder(cart) : undefined}>
-              {pathname === "/review" ? `Place Order` : 'Review Order'}
-            </button>
+          <button
+            className="btn-gold margin-top-10"
+          >
+            Shipment
+          </button>
         </NavLink>
       </div>
     </div>

@@ -13,7 +13,7 @@ const Product = (props) => {
       </div>
       <div className="product-details">
         <p className="product-name">
-          <Link to={`/product-details/${key}`}>{name}</Link>
+          <Link to={`/product-details/${key}?product_id=${key}`}>{name}</Link>
         </p>
         <p>
           <small>Seller: {seller}</small>

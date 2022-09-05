@@ -6,7 +6,6 @@ import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 const CartHeader = (props) => {
   const { carts } = props;
-  console.log(carts);
   return (
     <span className="dropdown">
       <span>

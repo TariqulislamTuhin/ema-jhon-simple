@@ -8,13 +8,11 @@ import Cart from "../Cart/Cart";
 const Review = () => {
   const [state, setState] = useContext(CartContext);
   const removeCart = (product) => {
-    console.log(product);
     const newState = state.filter((p) => p.key !== product.key);
     window.localStorage.setItem("carts", JSON.stringify(newState));
     setState(newState);
   };
   const placeOrder = (c) => {
-    console.log(c);
     window.localStorage.removeItem('carts');
     setState([]);
   };
